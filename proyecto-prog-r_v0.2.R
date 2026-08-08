@@ -707,7 +707,6 @@ FNOVA17_best_arima[[3]]                         # Tipo de modelo (órdenes)
 FNOVA17_best_fit
 FNOVA17_best_arima[[1]]                         # AIC
 
-# Pendiente por corregir
 ################################################
 
 
