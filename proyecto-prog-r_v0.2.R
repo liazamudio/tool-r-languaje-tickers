@@ -682,9 +682,13 @@ get.best.arima <- function(x.ts, maxord = c(1, 1, 1, 1, 1, 1)){
   for(p in 0:maxord[1])for(d in 0:maxord[2])for(q in 0:maxord[3])
     for(P in 0:maxord[4])for(D in 0:maxord[5])for(Q in 0:maxord[6])
     {
-      fit <- arima(x.ts, order = c(p, d, q),
-                   seas = list(order = c(P, D, Q),
-                               frequency(x.ts)), method = "CSS")
+      fit <- tryCatch(
+        arima(x.ts, order = c(p, d, q),
+              seas = list(order = c(P, D, Q),
+                          frequency(x.ts)), method = "CSS"),
+        error = function(e) NULL
+      )
+      if (is.null(fit)) next                    # Combinación no converge (p. ej. sistema singular con series cortas): se omite en vez de abortar la búsqueda
       fit.aic <- -2*fit$loglik + (log(n) + 1)*length(fit$coef)
       if(fit.aic < best.aic){
         best.aic <- fit.aic
@@ -695,11 +699,11 @@ get.best.arima <- function(x.ts, maxord = c(1, 1, 1, 1, 1, 1)){
   list(best.aic, best.fit, best.model)
 }
 
-FNOVA17_best_arima <- get.best.arima(FNOVA17_5a_ts),
+FNOVA17_best_arima <- get.best.arima(FNOVA17_5a_ts,
                                   maxord = c(2, 2, 2, 2, 2, 2))
 
 FNOVA17_best_fit <- FNOVA17_best_arima[[2]]     # Modelo
-best.arima.elec[[3]]                            # Tipo de modelo (órdenes)
+FNOVA17_best_arima[[3]]                         # Tipo de modelo (órdenes)
 FNOVA17_best_fit
 FNOVA17_best_arima[[1]]                         # AIC
 
