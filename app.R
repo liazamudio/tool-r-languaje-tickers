@@ -164,8 +164,7 @@ server <- function(input, output) {                                             
   library(quantmod)
 
   ########## Importación de datos ##########
-  setwd("d:/Alex/OneDrive/devs/github/portfolio/proyectos/15-prog-and-stat-r/proyecto-prog-r_v0.4/dataset/")
-  fibras2014a2024 <- read.csv("fibras2014-2024.csv")                            # Leemos el dataset que vamos a utilizar
+  fibras2014a2024 <- read.csv("dataset/fibras2014-2024.csv")                    # Leemos el dataset que vamos a utilizar (ruta relativa a la raíz del proyecto)
   ult_registro <- nrow(fibras2014a2024)                                         # Determinamos los limites del nuevo dataframe.
   nvo_prim_reg <- ult_registro-60                                               # 60 es el numero total de meses considerado, 12 repartidos en 5 años.
   fibras_ult_5a <- fibras2014a2024[nvo_prim_reg:ult_registro, ]                 # Creación del nuevo dataframe con los limites establecidos

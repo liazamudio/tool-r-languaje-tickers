@@ -18,11 +18,8 @@ library(quantmod)
 
 ##### Obtención de los datos a analizar
 
-# Definimos el directorio de trabajo
-setwd("d:/Alex/OneDrive/devs/github/portfolio/proyectos/15-prog-and-stat-r/dataset/")
-
-# Leemos el dataset que vamos a utilizar
-fibras2014a2024 <- read.csv("fibras2014-2024.csv")
+# Leemos el dataset que vamos a utilizar (ruta relativa a la raíz del proyecto)
+fibras2014a2024 <- read.csv("dataset/fibras2014-2024.csv")
 fibras2014a2024                               # Visualizamos la tabla
 # print(tail(fibras2014a2024))                # Visualizamos las ultimas filas del dataframe
 

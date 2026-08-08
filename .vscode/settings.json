@@ -1,0 +1,6 @@
+{
+  "r.rpath.windows": "C:/Program Files/R/R-4.6.1/bin/x64/R.exe",
+  "r.rterm.windows": "C:/Program Files/R/R-4.6.1/bin/x64/R.exe",
+  "r.plot.useHttpgd": true,
+  "r.bracketedPaste": true
+}
